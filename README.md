@@ -1,6 +1,7 @@
 # devcontainer-template
 
-Everything needed to start a new Rust project in a VS Code dev container:
+Everything needed to start a new Rust project in a VS Code dev container
+with Claude Code:
 
 - `base/` – the shared `devbase` image (Rust, cargo-nextest, bacon,
   agent-browser, Chromium, gh, jq, Claude Code and its status line script).
