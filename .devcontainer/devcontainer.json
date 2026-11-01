@@ -1,0 +1,34 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust
+{
+	"name": "Rust",
+	// Dedicated image: rust + node + Claude Code + rust-analyzer + the
+	// rust-analyzer-lsp plugin are baked in by the Dockerfile.
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"remoteUser": "vscode",
+	// Delete the container (and everything written to its filesystem) when it
+	// stops. Named volumes in "mounts" are untouched and the image isn't
+	// rebuilt; VS Code just creates a fresh container on next open.
+	"runArgs": ["--rm"],
+	"postCreateCommand": "git config core.hooksPath hooks",
+	"remoteEnv": {
+		"GH_TOKEN": "${localEnv:GH_TOKEN}",
+		// Claude Code login: a long-lived token from `claude setup-token`,
+		// exported in the Mac's shell profile, so it survives the container
+		// being deleted on close.
+		"CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}"
+	},
+	"mounts": [
+		// Bind the host git config so name/email survive rebuilds. SSH keys are
+		// not mounted: VS Code forwards the host SSH agent into the container
+		// automatically, so the key never leaves the host.
+		{
+			"source": "${localEnv:HOME}/.gitconfig",
+			"target": "/home/vscode/.gitconfig",
+			"type": "bind"
+		}
+	]
+}

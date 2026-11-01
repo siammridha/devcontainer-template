@@ -1,0 +1,6 @@
+.DS_Store
+project_*/
+docker_system_df.txt
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/skills/
