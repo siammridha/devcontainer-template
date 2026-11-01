@@ -37,7 +37,7 @@ The template expects these in your Mac's shell profile:
    ```
 
 GitHub Actions (`.github/workflows/build-devbase.yml`) builds the image for
-`linux/arm64` and `linux/amd64` and pushes it tagged `1.1.0` and `latest`.
+`linux/arm64` only (Apple Silicon) and pushes it tagged `1.1.0` and `latest`.
 
 To use the new image in a project, pull it and rebuild the container:
 
