@@ -1,3 +1,4 @@
 {
-  "remoteControlAtStartup": false
+  "remoteControlAtStartup": false,
+  "autoCompactWindow": 200000
 }
