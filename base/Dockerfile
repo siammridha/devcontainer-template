@@ -62,9 +62,7 @@ ENV CLAUDE_CONFIG_DIR=/home/vscode/.claude
 ENV PATH=/home/vscode/.local/bin:$PATH
 USER vscode
 RUN curl -fsSL https://claude.ai/install.sh | bash
-RUN claude plugin marketplace add DietrichGebert/ponytail && \
-    claude plugin marketplace add anthropics/claude-plugins-official && \
-    (claude plugin install ponytail@ponytail || echo "Warning: plugin install failed, continuing build") && \
+RUN claude plugin marketplace add anthropics/claude-plugins-official && \
     (claude plugin install rust-analyzer-lsp@claude-plugins-official || echo "Warning: plugin install failed, continuing build")
 
 # Don't auto-install the VS Code extension (a /config toggle in .claude.json),
